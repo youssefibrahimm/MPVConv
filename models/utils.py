@@ -2,7 +2,7 @@ import functools
 
 import torch.nn as nn
 
-from modules import SharedMLP, MPVConv, PointNetSAModule, PointNetAModule, PointNetFPModule
+from Modules.MPVConv.modules import SharedMLP, MPVConv, PointNetSAModule, PointNetAModule, PointNetFPModule
 
 __all__ = ['create_mlp_components', 'create_pointnet_components',
            'create_pointnet2_sa_components', 'create_pointnet2_fp_modules']
@@ -39,7 +39,7 @@ def create_mlp_components(in_channels, out_channels, classifier=False, dim=2, wi
             layers.append(_linear_bn_relu(in_channels, int(r * out_channels[-1])))
     else:
         if classifier:
-            layers.append(nn.Conv1d(in_channels, out_channels[-1], 1))
+            layers.append(nn.Conv1d(in_channels, out_channels[-1], kernel_size=1))
         else:
             layers.append(SharedMLP(in_channels, int(r * out_channels[-1])))
     return layers, out_channels[-1] if classifier else int(r * out_channels[-1])

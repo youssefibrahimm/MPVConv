@@ -1,7 +1,7 @@
 import torch
 import torch.nn as nn
 
-from models.utils import create_pointnet_components, create_mlp_components
+from Modules.MPVConv.models.utils import create_pointnet_components, create_mlp_components
 
 __all__ = ['PointNet']
 
