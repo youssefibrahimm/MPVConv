@@ -1,3 +1,7 @@
+import sys
+# add your path to the sys 
+sys.path.insert(0, 'C:\\Users\\youss\\OneDrive - aucegypt.edu\\Youssef\\3D_recon_pc')
+# print(sys.path)
 from Modules.MPVConv.modules.functional.ball_query import ball_query
 from Modules.MPVConv.modules.functional.devoxelization import trilinear_devoxelize
 from Modules.MPVConv.modules.functional.grouping import grouping
