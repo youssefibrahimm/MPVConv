@@ -1,7 +1,7 @@
 import torch
 import torch.nn as nn
 
-import modules.functional as F
+import Modules.MPVConv.modules.functional as F
 
 __all__ = ['Voxelization']
 
