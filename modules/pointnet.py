@@ -1,9 +1,9 @@
 import torch
 import torch.nn as nn
 
-import modules.functional as F
-from modules.ball_query import BallQuery
-from modules.shared_mlp import SharedMLP
+import Modules.MPVConv.modules.functional as F
+from Modules.MPVConv.modules.ball_query import BallQuery
+from Modules.MPVConv.modules.shared_mlp import SharedMLP
 
 __all__ = ['PointNetAModule', 'PointNetSAModule', 'PointNetFPModule']
 
