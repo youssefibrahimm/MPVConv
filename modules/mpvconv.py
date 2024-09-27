@@ -1,9 +1,9 @@
 import torch.nn as nn
 
-import modules.functional as F
-from modules.voxelization import Voxelization
-from modules.shared_mlp import SharedMLP
-from modules.se import SE3d
+import Modules.MPVConv.modules.functional as F
+from Modules.MPVConv.modules.voxelization import Voxelization
+from Modules.MPVConv.modules.shared_mlp import SharedMLP
+from Modules.MPVConv.modules.se import SE3d
 
 __all__ = ['MPVConv']
 
