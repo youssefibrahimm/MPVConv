@@ -19,7 +19,7 @@ class MPVCNN2(nn.Module):
         ((128, 128, 64), (64, 1, 32)),
     ]
 
-    def __init__(self, num_of_feat, extra_feature_channels=6, width_multiplier=1, voxel_resolution_multiplier=1):
+    def __init__(self, num_of_feat, extra_feature_channels=6, width_multiplier=5, voxel_resolution_multiplier=1):
         super().__init__()
         self.in_channels = extra_feature_channels + 3
 
@@ -38,7 +38,7 @@ class MPVCNN2(nn.Module):
         self.fp_layers = nn.ModuleList(fp_layers)
 
         layers, _ = create_mlp_components(in_channels=channels_fp_features, out_channels=[128, 0.5, num_of_feat],
-                                          classifier=True, dim=2, width_multiplier=width_multiplier)
+                                          classifier=False, dim=2, width_multiplier=width_multiplier)
         self.feat_extract = nn.Sequential(*layers)
 
     def forward(self, inputs):
