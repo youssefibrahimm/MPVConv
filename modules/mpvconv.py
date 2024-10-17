@@ -51,7 +51,8 @@ class MPVConv(nn.Module):
         features, coords = inputs
         # voxelize
         voxel_features, voxel_coords = self.voxelization(features, coords)
-        # convolveprint(f"voxel_features shape before Conv3d: {voxel_features.shape}")
+        # convolve
+        print(f"voxel_features shape before Conv3d: {voxel_features.shape}")
         voxel_features = self.voxel_layers(voxel_features)
         print(f"voxel_features shape after Conv3d: {voxel_features.shape}")
         # devoxelize by trilinear
