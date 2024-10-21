@@ -56,4 +56,4 @@ class MPVCNN2(nn.Module):
         for fp_idx, fp_blocks in enumerate(self.fp_layers):
             features, coords = fp_blocks((coords_list[-1-fp_idx], coords, features, in_features_list[-1-fp_idx]))
 
-        return self.feat_extract(features)
+        return self.feat_extract(features), coords
