@@ -52,16 +52,12 @@ class MPVConv(nn.Module):
         # voxelize
         voxel_features, voxel_coords = self.voxelization(features, coords)
         # convolve
-        print(f"voxel_features shape before Conv3d: {voxel_features.shape}")
         voxel_features = self.voxel_layers(voxel_features)
-        print(f"voxel_features shape after Conv3d: {voxel_features.shape}")
         # devoxelize by trilinear
         voxel_features = F.trilinear_devoxelize(voxel_features, voxel_coords, self.resolution, self.training)
-        print(f"voxel_features shape after devoxelize: {voxel_features.shape}")
         #---Transmission Voxel-Point Neuron
         fused_features1 = voxel_features + self.point_features(features)
         voxel_features2, voxel_coords2 = self.voxelization(fused_features1, coords)
-        print(f"voxel_features shape after transmission: {voxel_features2.shape}")
         voxel_features2 = self.voxel_layers2(voxel_features2)
         voxel_features2 = F.trilinear_devoxelize(voxel_features2, voxel_coords2, self.resolution, self.training)
         fused_features = voxel_features2 + self.point_features2(fused_features1) + voxel_features
